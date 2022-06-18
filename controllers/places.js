@@ -32,12 +32,27 @@ router.get('/:id', (req, res) => {
       res.render('error404')
     }
     else {
-        res.render('places/show', { place: places[id] })
+        res.render('places/show', { place: places[id], id })
     }
   })
   
+router.delete('/:id', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+      res.render('error404')
+      console.log("delete NaN")
+    }
+    else if (!places[id]) {
+      res.render('error404')
+      console.log("delete array does not exist")
+    }
+    else {
+      places.splice(id, 1)
+      console.log("delete redirect")
+      res.redirect('/places')
+    }
+})
   
-
 router.get('/new', (req, res) => {
     res.render('places/new')
 });
