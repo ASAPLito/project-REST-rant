@@ -1,7 +1,7 @@
 const React = require('react')
 const Def = require('../default')
 
-const show = () => {
+const show = (data) => {
     return (
         <Def>
           <main>
