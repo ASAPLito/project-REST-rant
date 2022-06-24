@@ -57,6 +57,7 @@ router.get('/new', (req, res) => {
     res.render('places/new')
 });
 
+//EDIT ROUTE
 router.get('/:id/edit', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
@@ -66,17 +67,23 @@ router.get('/:id/edit', (req, res) => {
       res.render('error404')
   }
   else {
-    res.render('places/edit', { place: places[id] })
+    res.render('places/edit', { place: { ...places[id], id } })
   }
 })
 
+//PUT ROUTE
 router.put('/:id', (req, res) => {
-  let id = Number(req.params.id)
+  const id = Number(req.params.id)
+  console.log("This is ID: " + req.params.id);
   if (isNaN(id)) {
       res.render('error404')
+      console.log("error is here at spot 1");
+      //This is where my code is getting stuck.
+      //This is the log statement that gets read.
   }
   else if (!places[id]) {
       res.render('error404')
+      console.log("error is here at spot 2")
   }
   else {
       // Dig into req.body and make sure data is valid
@@ -94,8 +101,10 @@ router.put('/:id', (req, res) => {
       // Save the new data into places[id]
       places[id] = req.body
       res.redirect(`/places/${id}`)
+      console.log("edit page is working")
   }
 })
+
 
 
 module.exports = router;
