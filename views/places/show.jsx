@@ -12,6 +12,9 @@ const show = (data) => {
                 <h2>{data.place.cuisines}</h2>
                 <h3>Rating</h3>
                 <p>Currently Unrated</p>
+                <h2>
+                    {data.place.showEstablished()}
+                </h2>
             </div>
             <hr></hr>
             <h3>Comments</h3>
