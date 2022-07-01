@@ -46,6 +46,21 @@ const show = (data) => {
                 </form> 
             </div>
           </main>
+          <section>
+            <form method='POST' action="/places/:id/comment">
+                <div className='form-group'>
+                    <label htmlFor='author'>Author</label>
+                    <input type='text' id='author' name='author'></input>
+                    <label htmlFor='content'>Content</label>
+                    <input type="text" id='content' name='content'></input>
+                    <label htmlFor='stars'>Star Rating</label>
+                    <input type='number' id='stars' name='stars' min='1' max='5'></input>
+                    <label htmlFor='rant'>Rant?</label>
+                    <input type='checkbox' id="rant" name='rant'></input>
+                </div>
+                <input className="btn btn-primary" type="submit" value="Add Comment" />
+            </form>
+          </section>
         </Def>
     )
 }
